@@ -1,4 +1,10 @@
 "use strict";
+window.addEventListener("load", focusInput);
+
+function focusInput() {
+    document.getElementById("altura").focus();
+}
+document.getElementById("form").reset();
 
 document.addEventListener("submit", calculaImc);
 
@@ -8,22 +14,65 @@ function calculaImc(event) {
 
     let altura = 0.01 * document.getElementById("altura").value;
     let peso = document.getElementById("peso").value;
-    let imc = peso / (altura * altura);
-    document.getElementById("resultado").value = imc.toFixed(2);
-    if (imc<17) {
-        "Muito abaixo do peso"
-    }if (imc<18,49) {
-        
+    let imc = (peso / (altura * altura)).toFixed(2);
+    //document.getElementById("resultado").value = imc;
+    let condicao = "";
+    /*
+    if (imc < 17) {
+        condicao = " - Muito abaixo do peso";
     } else {
-        
+        if (imc < 18.99) {
+            condicao = " - Abaixo do peso";
+        } else {
+            if (imc < 24.99) {
+                condicao = " - Peso normal";
+            } else {
+                if (imc < 29.99) {
+                    condicao = " - Acima do peso";
+                } else {
+                    if (imc < 34.99) {
+                        condicao = " - Obesidade grau I";
+                    } else {
+                        if (imc < 39.99) {
+                            condicao = " - Obesidade grau II";
+                        } else {
+                            condicao = " - Obesidade SEVERA";
+                        }
+                    }
+                }
+            }
+        }
     }
-
-    Abaixo de 17	
-Entre 17 e 18,49	Abaixo do peso
-Entre 18,50 e 24,99	Peso normal
-Entre 25 e 29,99	Acima do peso
-Entre 30 e 34,99	Obesidade I
-Entre 35 e 39,99	Obesidade II (severa)
-Acima de 40	Obesidade III (mórbida)
-
+    */
+    if (imc < 17) {
+        condicao = " MUITO ABAIXO DO PESO";
+    } else if (imc < 18.99) {
+        condicao = " ABAIXO DO PESO";
+    } else if (imc < 24.99) {
+        condicao = " PESO NORMAL";
+    } else if (imc < 29.99) {
+        condicao = " ACIMA DO PESO";
+    } else if (imc < 34.99) {
+        condicao = " OBESIDADE GRAU I";
+    } else if (imc < 39.99) {
+        condicao = " OBESIDADE GRAU II";
+    } else {
+        condicao = " OBESIDADE SEVERA";
+    }
+    /*
+    imc < 17
+        ? (condicao = " - Muito abaixo do peso")
+        : imc < 18.49
+        ? (condicao = " - Abaixo do peso")
+        : imc < 24.99
+        ? (condica = " - Peso normal")
+        : imc < 29.99
+        ? (condicao = " - Acima do peso")
+        : imc < 34.99
+        ? (condicao = " - Obesidade")
+        : imc < 39.99
+        ? (condicao = " - Obesidade I")
+        : (condicao = " - Obesidade II");
+*/
+    document.getElementById("resultado").value = `${imc}   |  ${condicao}`;
 }
