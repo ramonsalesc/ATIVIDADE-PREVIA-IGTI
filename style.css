@@ -2,11 +2,12 @@
     margin: 0px;
     padding: 0px;
 }
-
+/****Formatação do corpo****/
 body {
     background-color: rgb(200, 238, 240);
 }
 
+/****Formatação da barra de menu superior****/
 #cabecario {
     background-color: #064254;
     padding-top: 12px;
@@ -15,6 +16,7 @@ body {
     text-align: center;
 }
 
+/****Formatação da calculadora de IMC ****/
 .calculadora {
     background-color: #457686;
     height: 400px;
